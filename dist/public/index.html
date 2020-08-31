@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <!--fontawasome-->
+     <script src="https://kit.fontawesome.com/315d0401a2.js" crossorigin="anonymous"></script>    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Socket server / Client Test</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p>Client Side</p>
+                <form>
+                  <div class="form-group">
+                    <label class="smallFont" for="tamessage">Message senser</label>
+                    <textarea class="form-control smallFont" id="tamessage" rows="10"></textarea>
+                  </div>
+                  <div class="form-group form-row">
+                    <div class="col">
+                      <label class="smallFont" for="iserver">Server</label>
+                      <input id="iserver" type="text" class="form-control smallFont">
+                    </div>
+                    <div class="col">
+                      <label class="smallFont" for="iport">Port</label>
+                      <input id="iport" type="number" class="form-control smallFont">
+                    </div>
+                  </div>
+                  <div class="form-group form-row">
+                    <div class="col">
+                      <label class="smallFont" for="sasync">Async</label>
+                      <select class="form-control smallFont" id="sasync">
+                        <option>false</option>
+                        <option>true</option>
+                      </select>
+                    </div>
+                    <div class="col">
+                      <label class="smallFont" for="smultimessage">Multimessage</label>
+                      <select class="form-control smallFont" id="smultimessage">
+                        <option>false</option>
+                        <option>true</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group form-row">
+                    <div class="col">
+                      <label class="smallFont" for="istartmessage">Start of message</label>
+                      <input id="istartmessage" type="text" class="form-control smallFont" value="0B">
+                    </div>
+                    <div class="col">
+                      <label class="smallFont" for="iendmessage">End of message</label>
+                      <input id="iendmessage" type="text" class="form-control smallFont" value="1C0D">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="smallFont" for="sencoding">Encoding</label>
+                    <select class="form-control smallFont" id="sencoding">
+                      <option>ascii</option>
+                      <option>base64</option>
+                      <option>binary</option>
+                      <option>hex</option>
+                      <option>latin1</option>
+                      <option>ucs-2</option>
+                      <option>ucs2</option>
+                      <option>utf-8</option>
+                      <option>utf16le</option>
+                      <option>utf8</option>
+                    </select>
+                  </div>
+                  <button id="bsend" type="button" class="btn btn-primary smallFont">Send</button>
+                  <div class="form-group">
+                    <label class="smallFont" for="talog">Log</label>  <spam><i id="iclear" class="far fa-trash-alt"></i></spam>
+                    <textarea class="form-control smallFont" id="talog" rows="20" disabled></textarea>
+                  </div>
+                  </form>
+            </div>
+            <div class="col-6">
+                <p>Server side</p>
+                <form>
+                  <div class="form-group">
+                    <label class="smallFont" for="tassmessage">Message response</label>
+                    <textarea class="form-control smallFont" id="tassmessage" rows="10">MSH|^~\&|ISHMED|HGPS|HL7APP|HGPS|20200827084107||ACK^A01|1|P|2.5|||AL|AL|COL|8859/1
+MSA|11|1|mensaje con tílde eñe y mas cósás Á</textarea>
+                  </div>
+                  <div class="form-group form-row">
+                    <div class="col-6">
+                      <label class="smallFont" for="issport">Port</label>
+                      <input id="issport" type="number" class="form-control smallFont">
+                    </div>
+                  </div>
+                  <div class="form-group form-row">
+                    <div class="col">
+                      <label class="smallFont" for="ssasync">Async</label>
+                      <select class="form-control smallFont" id="ssasync">
+                        <option>false</option>
+                        <option>true</option>
+                      </select>
+                    </div>
+                    <div class="col">
+                      <label class="smallFont" for="ssmultimessage">Multimessage</label>
+                      <select class="form-control smallFont" id="ssmultimessage">
+                        <option>false</option>
+                        <option>true</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group form-row">
+                    <div class="col">
+                      <label class="smallFont" for="isstartmessage">Start of message</label>
+                      <input id="isstartmessage" type="text" class="form-control smallFont" value="0B">
+                    </div>
+                    <div class="col">
+                      <label class="smallFont" for="issendmessage">End of message</label>
+                      <input id="issendmessage" type="text" class="form-control smallFont" value="1C0D">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="smallFont" for="ssencoding">Encoding</label>
+                    <select class="form-control smallFont" id="ssencoding">
+                      <option>ascii</option>
+                      <option>base64</option>
+                      <option>binary</option>
+                      <option>hex</option>
+                      <option>latin1</option>
+                      <option>ucs-2</option>
+                      <option>ucs2</option>
+                      <option>utf-8</option>
+                      <option>utf16le</option>
+                      <option>utf8</option>
+                    </select>
+                  </div>
+                  <button id="bsopen" type="button" class="btn btn-primary smallFont">Open</button>
+                  <button id="bsclose" type="button" class="btn btn-primary smallFont">Close</button>
+                  <div class="form-group">
+                    <label class="smallFont" for="tssalog">Log</label>  <spam><i id="isclear" class="far fa-trash-alt"></i></spam>
+                    <textarea class="form-control smallFont" id="tssalog" rows="20" disabled></textarea>
+                  </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
